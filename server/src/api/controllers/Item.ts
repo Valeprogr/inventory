@@ -34,7 +34,18 @@ const createItem =async (req:Request, res: Response, next: NextFunction) => {
         return item
             .save()
             .then((item) => res.status(201).json({ item }))
-            .then((error)=> res.status(500).json(error))
+            .catch((error)=> res.status(500).json(error))
     }
 }
-export default { createItem }
+
+const findItem = (req: Request, res: Response, next: NextFunction) => {
+    const itemArticle = req.body.article;
+    
+    return Item.findOne({ article: req.body.article })
+        .then((item) => (item ? res.status(200).json({ item }) : res.status(404).json({ message: 'Not found' })))
+        .catch((error)=>res.status(500).json({error}))
+    
+}
+
+
+export default { createItem, findItem }
