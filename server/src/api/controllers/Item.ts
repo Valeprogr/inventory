@@ -39,8 +39,8 @@ const createItem =async (req:Request, res: Response, next: NextFunction) => {
 }
 
 const findItem = (req: Request, res: Response, next: NextFunction) => {
-    const itemArticle = req.params.article;
-    
+    const itemArticle = req.params.itemArticle;
+    console.log(itemArticle)
     return Item.findOne({ article: itemArticle })
         .then((item) => (item ? res.status(200).json({ item }) : res.status(404).json({ message: 'Not found' })))
         .catch((error)=>res.status(500).json({error}))
@@ -54,7 +54,7 @@ const getAllItems = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const updateItem = (req: Request, res: Response, next: NextFunction) => {
-    const itemArticle = req.params.article
+    const itemArticle = req.params.itemArticle;
     return Item.findOne({ article: itemArticle }).then((item) => {
         if (item) {
             item.set(req.body);
@@ -69,7 +69,7 @@ const updateItem = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const deleteItem = (req: Request, res: Response, next: NextFunction) => {
-    const itemArticle = req.params.article;
+    const itemArticle = req.params.itemArticle;
     return Item.findOneAndDelete({ article: itemArticle })
         .then((item) => (item ? res.status(201).json({ message: 'deleted' }) : res.status(404).json({ message: 'Not found' })))
         .catch((error)=> res.status(500).json({error}))
