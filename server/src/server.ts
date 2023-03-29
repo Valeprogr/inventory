@@ -1,7 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import { config } from "./api/config/config"
+import { config } from "./api/config/config";
+import itemRoutes from "./api/routes/Item";
 
 const app = express();
 app.use(cors());
@@ -34,7 +35,7 @@ const StartServer = () => {
     });
 
     //Routes
-
+    app.use('/items', itemRoutes);
     //HealthCheck
     app.get('/ping', (req, res, next) => {
         res.status(200).json({ message: 'pong' })
