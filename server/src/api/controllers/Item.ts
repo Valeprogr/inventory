@@ -41,11 +41,32 @@ const createItem =async (req:Request, res: Response, next: NextFunction) => {
 const findItem = (req: Request, res: Response, next: NextFunction) => {
     const itemArticle = req.body.article;
     
-    return Item.findOne({ article: req.body.article })
+    return Item.findOne({ article: itemArticle })
         .then((item) => (item ? res.status(200).json({ item }) : res.status(404).json({ message: 'Not found' })))
         .catch((error)=>res.status(500).json({error}))
     
 }
 
+const getAllItems = (req: Request, res: Response, next: NextFunction) => {
+    return Item.find()
+        .then((items) => res.status(200).json({ items }))
+        .catch((error)=> res.status(500).json({error}))
+}
 
-export default { createItem, findItem }
+const updateItem = (req: Request, res: Response, next: NextFunction) => {
+    const itemArticle = req.params.article
+    return Item.findOne({ article: itemArticle }).then((item) => {
+        if (item) {
+            item.set(req.body);
+            return item
+                .save()
+                .then((item) => res.status(201).json({ item }))
+                .catch((error) => res.status(500).json({ error }))
+        } else {
+            return res.status(404).json({ message: 'Not found' });
+        }
+    });
+}
+
+
+export default { createItem, findItem, getAllItems, updateItem }
