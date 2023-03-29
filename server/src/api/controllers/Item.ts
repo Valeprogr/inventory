@@ -39,7 +39,7 @@ const createItem =async (req:Request, res: Response, next: NextFunction) => {
 }
 
 const findItem = (req: Request, res: Response, next: NextFunction) => {
-    const itemArticle = req.body.article;
+    const itemArticle = req.params.article;
     
     return Item.findOne({ article: itemArticle })
         .then((item) => (item ? res.status(200).json({ item }) : res.status(404).json({ message: 'Not found' })))
@@ -68,5 +68,10 @@ const updateItem = (req: Request, res: Response, next: NextFunction) => {
     });
 }
 
-
-export default { createItem, findItem, getAllItems, updateItem }
+const deleteItem = (req: Request, res: Response, next: NextFunction) => {
+    const itemArticle = req.params.article;
+    return Item.findOneAndDelete({ article: itemArticle })
+        .then((item) => (item ? res.status(201).json({ message: 'deleted' }) : res.status(404).json({ message: 'Not found' })))
+        .catch((error)=> res.status(500).json({error}))
+}
+export default { createItem, findItem, getAllItems, updateItem, deleteItem }
