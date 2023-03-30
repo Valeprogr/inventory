@@ -12,7 +12,7 @@ const About = () => {
             wide range of industries.</p>
           
         </div>
-        <div className='bg-white grid grid-cols-3 gap-10 lg:mt-32 md:mt-24 mb-24 border p-12 text-black'>
+        <div className='bg-white grid grid-cols-3 gap-10 lg:mt-32 md:mt-24 mb-24 border p-12 text-primary'>
           <div className='col-span-3 flex justify-center'>
             <p className='text-4xl'>Meet the Team</p> 
             
