@@ -4,7 +4,7 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className='w-screen bg-primary border border-b-gray-100 p-6 '>
+            <nav className='w-screen bg-primary border-b border-white p-6 '>
                 <div className='flex justify-between'>
                     <div>
                        <h1>
