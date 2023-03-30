@@ -7,6 +7,7 @@ import ProductInfo from "./pages/ProductInfo";
 import NavBar from "./components/NavBar";
 function App() {
   
+  
   return (
     <>
       <NavBar />
@@ -16,7 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<ProductsList />} />
-          <Route path="/product" element={<ProductInfo />} />
+          <Route path="/products/:itemArticle" element={<ProductInfo />} />
         </Routes>
       </div>
     </>

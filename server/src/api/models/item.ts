@@ -7,8 +7,8 @@ export interface IItem{
     category: string;
     gender: string,
     color: string;
-    size: number;
-    quantity: number;
+    size: string;
+    quantity: string;
 }
 
 export interface IItemModel extends IItem, Document{ }
@@ -20,8 +20,8 @@ const ItemSchema = new Schema({
     category: { type: String, require: true },
     gender: { type: String, require: true },
     color: { type: String, require: true },
-    size: { type: Number, require: true },
-    quantity: { type: Number }
+    size: { type: String, require: true },
+    quantity: { type: String, }
 });
 
 export default mongoose.model<IItemModel>('Item', ItemSchema);

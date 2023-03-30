@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
 
     useEffect(() => {
         getProducts(setProducts);
+        
     }, []);
     
     return (
