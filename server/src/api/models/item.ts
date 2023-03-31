@@ -2,16 +2,27 @@ import mongoose, { Schema } from "mongoose";
 
 export interface IItem{
     article: number;
-    brand: string,
+    brand: string;
     name: string;
     category: string;
-    gender: string,
+    gender: string;
     color: string;
-    size: string;
-    quantity: string;
+    s36: number;
+    s37: number;
+    s38: number;
+    s39: number;
+    s40: number;
+    s41: number;
+    s42: number;
+    s43: number;
+    s44: number;
+    s45: number;
+    
 }
 
 export interface IItemModel extends IItem, Document{ }
+
+
 
 const ItemSchema = new Schema({
     article: { type: Number },
@@ -20,8 +31,17 @@ const ItemSchema = new Schema({
     category: { type: String, require: true },
     gender: { type: String, require: true },
     color: { type: String, require: true },
-    size: { type: String, require: true },
-    quantity: { type: String, }
+    s36: {type: Number, default:0},
+    s37: {type: Number, default:0},
+    s38: {type: Number, default:0},
+    s39: {type: Number, default:0},
+    s40: {type: Number, default:0},
+    s41: {type: Number, default:0},
+    s42: {type: Number, default:0},
+    s43: {type: Number, default:0},
+    s44: {type: Number, default:0},
+    s45: {type: Number, default:0}
+   
 });
 
 export default mongoose.model<IItemModel>('Item', ItemSchema);

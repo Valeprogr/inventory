@@ -10,7 +10,9 @@ const Home = () => {
                     Perfect for both small businesses and large companies,
                     <br/>
                     <strong>What are you waiting for to try it out ?</strong></p>
-                    <button className='mt-12 w-32 h-12 rounded text-white bg-secondary uppercase  active:text-primary font-bold  text-sm px-6 py-3 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>Try Now</button>
+                <a href='/products'>
+                <button className='mt-12 w-32 h-12 rounded text-white bg-secondary uppercase  active:text-primary font-bold  text-sm px-6 py-3 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>Try Now</button>   
+                </a>
             </div>
         </div>
     );
