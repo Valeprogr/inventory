@@ -7,4 +7,5 @@ This project was created to facilitate shoe inventory in warehouses.
 User can save shoe models in the database with item, name, category, color and size.
 He can later add or subtract sizes from the database or delete the model.
 
-## Languages
+## Technology Used
+React, Javascript (JSX), CSS, Tailwind, Node.js, Express, Typescript and MongoDB.
