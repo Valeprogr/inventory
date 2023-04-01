@@ -3,18 +3,19 @@ import Card from '../components/Card';
 
 const About = () => {
     return (
-        <div className='bg-primary text-white h-auto px-32 flex flex-col'>
+        <div className='bg-background text-primary h-auto px-32 flex flex-col'>
         <div className='flex flex-col items-center'>
-          <p className='text-6xl m-8'>About Us</p>
-          <p className='text-xl w-2/3 text-center'>Founded by a group of passionate entrepreneur,
-            our company has grow from a small startup into a leading
-            provider of innovative solutions for businesses across a
-            wide range of industries.</p>
+          <p className='text-5xl pt-12'>About Us</p>
+          <p className='text-l text-left mt-3'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           
         </div>
-        <div className='bg-white grid grid-cols-3 gap-10 lg:mt-32 md:mt-24 mb-24 border p-12 text-primary'>
+        <div className='bg-white shadow-md grid grid-cols-3 gap-10 lg:mt-14 md:mt-24 mb-24 border p-12 text-primary rounded-md'>
           <div className='col-span-3 flex justify-center'>
-            <p className='text-4xl'>Meet the Team</p> 
+            <p className='text-xl uppercase font-bold'>Meet the Team</p> 
             
           </div>
             <Card props="Elena" />

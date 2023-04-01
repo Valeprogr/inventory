@@ -75,7 +75,6 @@ const AddNewModel = () => {
                   <h3 className="text-3xl font-semibold">
                     Add a new Product
                   </h3>
-                  {/* <button className="p-1 ml-auto   text-black  text-3xl  font-semibold" onClick={saveProductHandler}></button> */}
                 </div>
                 {/*body*/}
                     <div className="p-6 flex-auto grid grid-cols-4 gap-5">
