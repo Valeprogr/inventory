@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "code challenge",
   "main": "src/server.ts",
+  "type": "module",
   "scripts": {
     "test": "",
     "dev": "nodemon src/server.ts"
