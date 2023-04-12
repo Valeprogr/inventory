@@ -4,6 +4,7 @@
   "description": "code challenge",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "",
     "dev": "nodemon src/server.ts"
   },
