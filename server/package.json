@@ -7,7 +7,6 @@
     "build": "tsc",
     "type": "module",
     "test": "",
-    "start": "ts-node src/server.ts",
     "dev": "nodemon src/server.ts"
   },
   "author": "valentina vittoria",
