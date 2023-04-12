@@ -8,7 +8,7 @@
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node  src/server.ts",
-    "dev": "nodemon --exec  src/server.ts"
+    "dev": "nodemon  src/server.ts"
   },
   "author": "valentina vittoria",
   "license": "ISC",
