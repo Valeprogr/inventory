@@ -8,15 +8,16 @@ const app = express();
 app.use(cors());
 
 //Connection with Mongo
-mongoose.connect(config.mongo.url, { retryWrites: true, w: "majority" })
+
+ mongoose.connect(config.mongo.url, { retryWrites: true, w: "majority" })
     .then(() => {
-        console.log('Connect to mongo');
-        //Call function for start server
+         console.log('Connect to mongo');
+         //Call function for start server
         StartServer();
     })
     .catch((error) => {
         console.log(error)
-    })
+     })
 
     //Function start server
 
