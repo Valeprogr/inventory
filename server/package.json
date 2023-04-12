@@ -9,8 +9,7 @@
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/server.js",
-    "dev": "nodemon  src/server.ts",
-    "postinstall": "tsc"
+    "dev": "nodemon  src/server.ts"
   },
   "author": "valentina vittoria",
   "license": "ISC",
