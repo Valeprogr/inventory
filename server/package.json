@@ -4,6 +4,7 @@
   "description": "code challenge",
   "main": "server.js",
   "scripts": {
+    "tsc": "tsc",
     "build": "rimraf ./build && tsc",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
