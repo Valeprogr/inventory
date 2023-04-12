@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useAppContex } from '../contex';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddNewModel = () => {
     const { products } = useAppContex();
@@ -25,6 +27,12 @@ const AddNewModel = () => {
     s45: ''
     
   });
+  //Toast Message
+  const showToastMessage = () => {
+    toast.success('The model was successfully inserted!', {
+      position: toast.POSITION.TOP_CENTER
+    });
+  }
 //Save new Product
   const saveProductHandler = (event) => {
     event.preventDefault();
@@ -55,6 +63,7 @@ const AddNewModel = () => {
         s45: ''
 
       }))
+    showToastMessage();
     
   }
   const changeHandler = (event) => {
@@ -137,11 +146,12 @@ const AddNewModel = () => {
                     Save
                             </button>
                 </a>
-                </div>
+              </div>
+              
               </div>
             </div>
           </div>
-          
+          <ToastContainer />
         </>
     )
 }
