@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "code challenge",
-  "main": "src/server.js",
+  "main": "server.js",
   "scripts": {
     "tsc": "tsc",
     "build": "rimraf ./build && tsc", 
