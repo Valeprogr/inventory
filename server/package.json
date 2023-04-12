@@ -4,11 +4,13 @@
   "description": "code challenge",
   "main": "src/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run tsc", 
+    "tsc": "tsc",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/server.js",
-    "dev": "nodemon  src/server.ts"
+    "dev": "nodemon  src/server.ts",
+    "postinstall": "tsc"
   },
   "author": "valentina vittoria",
   "license": "ISC",
