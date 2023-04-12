@@ -4,7 +4,7 @@
   "description": "code challenge",
   "main": "src/server.js",
   "scripts": {
-    "build": "tsc", 
+    "build": "npm install && tsc", 
     "tsc": "tsc",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
