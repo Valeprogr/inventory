@@ -5,7 +5,6 @@
   "main": "build/index.js",
   "scripts": {
     "tsc": "tsc",
-    "build": "rm -rf build/ && tsc ",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
