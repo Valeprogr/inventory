@@ -2,9 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "code challenge",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "tsc",
+    "type": "module",
     "test": "",
     "start": "ts-node src/server.ts",
     "dev": "nodemon src/server.ts"
