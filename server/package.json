@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "code challenge",
-  "main": "/src/server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "test": "",
     "dev": "nodemon src/server.ts"
