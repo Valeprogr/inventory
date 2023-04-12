@@ -7,7 +7,7 @@
     "tsc": "tsc",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node build/server.js",
     "dev": "nodemon  src/server.ts"
   },
   "author": "valentina vittoria",
