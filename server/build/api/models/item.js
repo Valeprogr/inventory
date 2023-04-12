@@ -43,3 +43,4 @@ const ItemSchema = new mongoose_1.Schema({
     s45: { type: Number, default: 0 }
 });
 exports.default = mongoose_1.default.model('Item', ItemSchema);
+//# sourceMappingURL=item.js.map

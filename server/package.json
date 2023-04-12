@@ -4,10 +4,10 @@
   "description": "code challenge",
   "main": "build/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf build/ && tsc ",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node  src/server.ts",
+    "start": "node build/server.js",
     "dev": "nodemon  src/server.ts"
   },
   "author": "valentina vittoria",

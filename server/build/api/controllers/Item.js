@@ -99,3 +99,4 @@ const deleteItem = (req, res, next) => {
         .catch((error) => res.status(500).json({ error }));
 };
 exports.default = { createItem, findItem, getAllItems, updateItem, deleteItem };
+//# sourceMappingURL=Item.js.map

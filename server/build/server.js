@@ -47,3 +47,4 @@ const StartServer = () => {
     });
     app.listen(config_1.config.server.port, () => console.log(`Server is running on port ${config_1.config.server.port}.`));
 };
+//# sourceMappingURL=server.js.map

@@ -11,3 +11,4 @@ router.post("/create", Item_1.default.createItem);
 router.patch("/update/:itemArticle", Item_1.default.updateItem);
 router.delete("/delete/:itemArticle", Item_1.default.deleteItem);
 module.exports = router;
+//# sourceMappingURL=Item.js.map
