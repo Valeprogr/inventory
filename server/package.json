@@ -2,9 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "code challenge",
-  "main": "build/server.js",
+  "main": "src/server.js",
   "scripts": {
-    "tsc": "tsc",
+    "postinstall": "tsc",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/server.js",
