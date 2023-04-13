@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "code challenge",
-  "main": "server.js",
+  "main": "build/server.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
