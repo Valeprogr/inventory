@@ -5,6 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "tsc": "tsc",
     "build": "npx tsc",
     "type": "module",
     "test": "echo \"Error: no test specified\" && exit 1",
