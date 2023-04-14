@@ -1,25 +1,16 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const item_1 = __importDefault(require("../models/item"));
-const createItem = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createItem = async (req, res, next) => {
     if (!req.body) {
         return res.status(500).json({ message: "no req body" });
     }
     console.log(req.body);
-    let item = yield item_1.default.findOne({ article: req.body.article });
+    let item = await item_1.default.findOne({ article: req.body.article });
     if (item) {
         return res.status(403).json({ message: 'This article already exist' });
     }
@@ -65,7 +56,7 @@ const createItem = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             .then((item) => res.status(201).json({ item }))
             .catch((error) => res.status(500).json(error));
     }
-});
+};
 const findItem = (req, res, next) => {
     const itemArticle = req.params.itemArticle;
     return item_1.default.find({ article: itemArticle })
@@ -99,4 +90,3 @@ const deleteItem = (req, res, next) => {
         .catch((error) => res.status(500).json({ error }));
 };
 exports.default = { createItem, findItem, getAllItems, updateItem, deleteItem };
-//# sourceMappingURL=Item.js.map

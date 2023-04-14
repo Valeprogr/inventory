@@ -18,4 +18,3 @@ exports.config = {
         port: PORT
     }
 };
-//# sourceMappingURL=config.js.map
