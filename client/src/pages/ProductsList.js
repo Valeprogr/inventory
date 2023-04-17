@@ -84,9 +84,9 @@ const ProductsList = () => {
                 <tbody>
                   {
                     show ? 
-                      selectProduct.map((ele) => (<TableProducts selectProduct={ele}  />))
+                      selectProduct.map((ele,index) => (<TableProducts selectProduct={ele} key={index} />))
                       :
-                      products && products.items.map((ele)=>(<TableProducts selectProduct={ele}  />))
+                      products && products.items.map((ele,index2)=>(<TableProducts selectProduct={ele} key={index2} />))
                   }
                 </tbody>
               </table>
