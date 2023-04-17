@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const DeleteProduct = () => {
-    const { itemArticle } = useParams();
+  const { itemArticle } = useParams();
+  const navigate = useNavigate();
+    //Toast Message
+    const showToastMessage = () => {
+      toast.success('The model was successfully deleted!', {
+        position: toast.POSITION.TOP_CENTER
+      });
+    }
+  
       //Delete Modell
       const deleteModelHandler = (event) => {
         event.preventDefault();
@@ -13,8 +24,12 @@ const DeleteProduct = () => {
         fetch(`http://localhost:9090/items/delete/${itemArticle}`, requestOptions)
           .then((response) => response.json())
           .then((data) => console.log(data))
-        
+        showToastMessage();
+        setTimeout(() => {
+          navigate(-1);
+        },4000)
       }
+  
    
     return (
         <div className='flex flex-col items-center mt-32'>
@@ -28,7 +43,7 @@ const DeleteProduct = () => {
         <button className='bg-red-600 mt-12 w-28 h-12  uppercase text-white m-4' onClick={deleteModelHandler}>Delete</button>
 
         </div>
-     
+        <ToastContainer />
        </div>
     );
 }

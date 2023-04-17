@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useAppContex } from '../contex';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewModel = () => {
-    const { products } = useAppContex();
-    const [selectProduct, setSelectProduct] = useState([]);
+  const { products } = useAppContex();
+  const [selectProduct, setSelectProduct] = useState([]);
+  const navigate = useNavigate();
+  
 
   //Form Data
   const [form, setForm] = useState({
@@ -64,6 +67,11 @@ const AddNewModel = () => {
 
       }))
     showToastMessage();
+    setTimeout(() => {
+      navigate(-1);
+    },4000)
+    
+    
     
   }
   const changeHandler = (event) => {
