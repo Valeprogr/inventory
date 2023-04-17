@@ -26,8 +26,8 @@ const DeleteProduct = () => {
           .then((data) => console.log(data))
         showToastMessage();
         setTimeout(() => {
-          navigate(-1);
-        },4000)
+          navigate(-2);
+        },2000)
       }
   
    
