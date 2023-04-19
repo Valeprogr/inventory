@@ -6,8 +6,8 @@
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon  src/server.ts"
+    "start": "node build/server.js",
+    "dev": "npx tsc -w & nodemon  build/server.js"
   },
   "author": "valentina vittoria",
   "license": "ISC",
