@@ -4,8 +4,9 @@
   "description": "code challenge",
   "main": "build/server.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "rimraf build && npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm run build",
     "start": "node build/server.js",
     "dev": "npx tsc -w & nodemon  build/server.js"
   },
