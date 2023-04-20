@@ -8,11 +8,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "npm run build",
     "start": "node build/server.js",
-    "dev": "npx tsc -w & nodemon  build/server.js"
+    "predev": "npm run build",
+    "dev": "concurrently \"npx tsc -w \"  \"nodemon  build/server.js\""
   },
   "author": "valentina vittoria",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
