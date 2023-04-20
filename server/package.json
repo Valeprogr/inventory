@@ -9,7 +9,9 @@
     "prestart": "npm run build",
     "start": "node build/server.js",
     "predev": "npm run build",
-    "dev": "concurrently \"npx tsc -w \"  \"nodemon  build/server.js\""
+    "dev": "concurrently \"npx tsc -w \"  \"nodemon  build/server.js\"",
+    "add-build": "git add build",
+    "pre-commit": ["build", "add-build"]
   },
   "author": "valentina vittoria",
   "license": "ISC",
