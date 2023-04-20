@@ -13,10 +13,6 @@
     "add-build": "git add build"
   },
 
-  "pre-commit": [
-    "build",
-    "add-build"
-  ],
 
   "author": "valentina vittoria",
   "license": "ISC",
