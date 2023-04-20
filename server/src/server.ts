@@ -41,6 +41,9 @@ const StartServer = () => {
     app.get('/ping', (req, res, next) => {
         res.status(200).json({ message: 'pong' })
     });
+    app.get("/", (req, res) => {
+        res.status(200).send("Vercel + ts + node");
+    })
 
     //Errors Handling
     app.use((req, res, next) => {
