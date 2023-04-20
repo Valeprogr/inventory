@@ -44,7 +44,7 @@ const AddNewModel = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
     };
-    fetch("http://localhost:9090/items/create", requestOptions)
+    fetch("https://inventory-beige-ten.vercel.app/items/create", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data))
       .then(setForm({

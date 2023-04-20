@@ -20,18 +20,18 @@ const ProductInfo = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(selectProduct)
     };
-    fetch(`http://localhost:9090/items/update/${itemArticle}`, requestOptions)
+    fetch(`https://inventory-beige-ten.vercel.app/items/update/${itemArticle}`, requestOptions)
     .then((response) => response.json())
     .then((data) => console.log(data))
     .then(setSelectProduct({}))
-    .then( window.location.reload(true))  
+    .then(setTimeout(()=> {window.location.reload(true)},1000) )  
     }
 
   }
  
 
   useEffect(() => {
-    fetch(`http://localhost:9090/items/get/${itemArticle}`)
+    fetch(`https://inventory-beige-ten.vercel.app/items/get/${itemArticle}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error)=>console.log(`Getting products  failed with a status of ${error}`))
