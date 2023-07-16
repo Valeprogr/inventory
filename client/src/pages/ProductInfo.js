@@ -20,7 +20,7 @@ const ProductInfo = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(selectProduct)
     };
-    fetch(`https://inventory-beige-ten.vercel.app/items/update/${itemArticle}`, requestOptions)
+    fetch(`https://inventory-beige-ten.vercel.app/shoes/editSizes/${itemArticle}`, requestOptions)
     .then((response) => response.json())
     .then((data) => console.log(data))
     .then(setSelectProduct({}))
@@ -31,7 +31,7 @@ const ProductInfo = () => {
  
 
   useEffect(() => {
-    fetch(`https://inventory-beige-ten.vercel.app/items/get/${itemArticle}`)
+    fetch(`https://inventory-beige-ten.vercel.app/shoes/shoesModel/${itemArticle}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error)=>console.log(`Getting products  failed with a status of ${error}`))

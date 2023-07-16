@@ -3,10 +3,10 @@ import controllers from "../controllers/Item";
 
 const router = express.Router();
 
-router.get("/get", controllers.getAllItems);
-router.get("/get/:itemArticle", controllers.findItem);
-router.post("/create", controllers.createItem);
-router.patch("/update/:itemArticle", controllers.updateItem);
-router.delete("/delete/:itemArticle", controllers.deleteItem);
+router.get("/allShoes", controllers.getAllItems);
+router.get("/shoesModel/:itemArticle", controllers.findItem);
+router.post("/addModel", controllers.createItem);
+router.patch("/editSizes/:itemArticle", controllers.updateItem);
+router.delete("/deleteModel/:itemArticle", controllers.deleteItem);
 
 export = router;
