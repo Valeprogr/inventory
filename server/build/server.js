@@ -35,7 +35,7 @@ const StartServer = () => {
         next();
     });
     //Routes
-    app.use('/items', Item_1.default);
+    app.use('/shoes', Item_1.default);
     //HealthCheck
     app.get('/ping', (req, res, next) => {
         res.status(200).json({ message: 'pong' });

@@ -5,10 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 const express_1 = __importDefault(require("express"));
 const Item_1 = __importDefault(require("../controllers/Item"));
 const router = express_1.default.Router();
-router.get("/get", Item_1.default.getAllItems);
-router.get("/get/:itemArticle", Item_1.default.findItem);
-router.post("/create", Item_1.default.createItem);
-router.patch("/update/:itemArticle", Item_1.default.updateItem);
-router.delete("/delete/:itemArticle", Item_1.default.deleteItem);
+router.get("/allShoes", Item_1.default.getAllItems);
+router.get("/shoesModel/:itemArticle", Item_1.default.findItem);
+router.post("/addModel", Item_1.default.createItem);
+router.patch("/editSizes/:itemArticle", Item_1.default.updateItem);
+router.delete("/deleteModel/:itemArticle", Item_1.default.deleteItem);
 module.exports = router;
 //# sourceMappingURL=Item.js.map
