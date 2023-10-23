@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const item_1 = __importDefault(require("../models/item"));
 const createItem = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     if (!req.body) {
         return res.status(500).json({ message: "no req body" });
     }
@@ -30,16 +31,16 @@ const createItem = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         const category = (req.body.category).toLowerCase();
         const gender = (req.body.gender).toLowerCase();
         const color = (req.body.color).toLowerCase();
-        const s36 = Math.floor(req.body.s36);
-        const s37 = Math.floor(req.body.s37);
-        const s38 = Math.floor(req.body.s38);
-        const s39 = Math.floor(req.body.s39);
-        const s40 = Math.floor(req.body.s40);
-        const s41 = Math.floor(req.body.s41);
-        const s42 = Math.floor(req.body.s42);
-        const s43 = Math.floor(req.body.s43);
-        const s44 = Math.floor(req.body.s44);
-        const s45 = Math.floor(req.body.s45);
+        const s36 = (_a = Math.floor(req.body.s36)) !== null && _a !== void 0 ? _a : 0;
+        const s37 = (_b = Math.floor(req.body.s37)) !== null && _b !== void 0 ? _b : 0;
+        const s38 = (_c = Math.floor(req.body.s38)) !== null && _c !== void 0 ? _c : 0;
+        const s39 = (_d = Math.floor(req.body.s39)) !== null && _d !== void 0 ? _d : 0;
+        const s40 = (_e = Math.floor(req.body.s40)) !== null && _e !== void 0 ? _e : 0;
+        const s41 = (_f = Math.floor(req.body.s41)) !== null && _f !== void 0 ? _f : 0;
+        const s42 = (_g = Math.floor(req.body.s42)) !== null && _g !== void 0 ? _g : 0;
+        const s43 = (_h = Math.floor(req.body.s43)) !== null && _h !== void 0 ? _h : 0;
+        const s44 = (_j = Math.floor(req.body.s44)) !== null && _j !== void 0 ? _j : 0;
+        const s45 = (_k = Math.floor(req.body.s45)) !== null && _k !== void 0 ? _k : 0;
         //{ s36, s37, s38, s39, s40, s41, s42, s43, s44, s45 } 
         const item = new item_1.default({
             _id: new mongoose_1.default.Types.ObjectId(),
