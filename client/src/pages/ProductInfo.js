@@ -20,7 +20,7 @@ const ProductInfo = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(selectProduct)
       };
-    fetch(`${process.env.API_BASE_UR}shoes/editSizes/${itemArticle}`, requestOptions)
+    fetch(`${process.env.API_BASE_URL}shoes/editSizes/${itemArticle}`, requestOptions)
     .then((response) => response.json())
     .then((data) => console.log(data))
     .then(setSelectProduct({}))
@@ -31,7 +31,7 @@ const ProductInfo = () => {
  
 
   useEffect(() => {
-    fetch(`${process.env.API_BASE_UR}shoes/shoesModel/${itemArticle}`)
+    fetch(`${process.env.API_BASE_URL}shoes/shoesModel/${itemArticle}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error)=>console.log(`Getting products  failed with a status of ${error}`))
