@@ -56,9 +56,9 @@ const createItem = async (
     }
 }
 
-const getAllItems = async () => {
+const getAllItems = async (offset: number, limit: number) => {
     try {
-        let items = await Item.find();
+        let items = await Item.find().skip(offset).limit(limit).exec();
         if (!items) items = [];
         return items;
     } catch (err: any) {

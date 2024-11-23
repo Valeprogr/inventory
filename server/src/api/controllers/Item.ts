@@ -78,7 +78,9 @@ const findItem = async (req: Request, res: Response, next: NextFunction) => {
 
 const getAllItems = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const items = await Repo.getAllItems();
+        const limit = parseInt(req.query.limit as string) || 10; // Default: 10 items
+        const offset = parseInt(req.query.offset as string) || 0; // Default: start from 0
+        const items = await Repo.getAllItems(limit, offset);
         return items;
     } catch (err: any) {
         return res.status(500).json({ message: `Error getAllItems : while fetching all items error : ${err}` });
