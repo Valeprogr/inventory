@@ -21,7 +21,7 @@ const DeleteProduct = () => {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json'}
         };
-        fetch(`https://inventory-beige-ten.vercel.app/shoes/deleteModel/${itemArticle}`, requestOptions)
+        fetch(`${process.env.API_BASE_UR}shoes/deleteModel/${itemArticle}`, requestOptions)
           .then((response) => response.json())
           .then((data) => console.log(data))
         showToastMessage();
