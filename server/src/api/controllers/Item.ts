@@ -1,37 +1,41 @@
 import { NextFunction, Request, Response } from "express";
-import mongoose from "mongoose";
 import Item from "../models/item";
+import Repo from "../repo/Item";
+import Services from "../services/Item";
+import { isValidNumericObject } from "../../utils/validationNumericObject";
 
 
 const createItem = async (req: Request, res: Response, next: NextFunction) => {
-    if (!req.body) {
-        return res.status(500).json({ message: "no req body" })
-    }
-    console.log(req.body)
-    let item = await Item.findOne({ article: req.body.article })
-    if (item) {
-        return res.status(403).json({ message: 'This article already exist' })
-    } else {
-        const article = Math.floor(req.body.article);
-        const brand = (req.body.brand).toLowerCase();
-        const name = (req.body.name).toLowerCase();
-        const category = (req.body.category).toLowerCase();
-        const gender = (req.body.gender).toLowerCase();
-        const color = (req.body.color).toLowerCase();
-        const s36 = Math.floor(req.body.s36) ?? 0;
-        const s37 = Math.floor(req.body.s37) ?? 0;
-        const s38 = Math.floor(req.body.s38) ?? 0;
-        const s39 = Math.floor(req.body.s39) ?? 0;
-        const s40 = Math.floor(req.body.s40) ?? 0;
-        const s41 = Math.floor(req.body.s41) ?? 0;
-        const s42 = Math.floor(req.body.s42) ?? 0;
-        const s43 = Math.floor(req.body.s43) ?? 0;
-        const s44 = Math.floor(req.body.s44) ?? 0;
-        const s45 = Math.floor(req.body.s45) ?? 0;
-        //{ s36, s37, s38, s39, s40, s41, s42, s43, s44, s45 } 
+    if (!req.body) return res.status(404).json({ message: "no req body" });
+    let item = await Repo.findItemByArticle(req.body.article);
+    if (item) return res.status(400).json({ message: 'This article already exist' });
 
-        const item = new Item({
-            _id: new mongoose.Types.ObjectId(),
+    const article = Number(req.body.article);
+    const brand = req.body.brand;
+    const name = req.body.name;
+    const category = req.body.category;
+    const gender = req.body.gender;
+    const color = req.body.color;
+    const s36 = !isNaN(Number(req.body.s36)) ? Number(req.body.s36) : 0;
+    const s37 = !isNaN(Number(req.body.s37)) ? Number(req.body.s37) : 0;
+    const s38 = !isNaN(Number(req.body.s38)) ? Number(req.body.s38) : 0;
+    const s39 = !isNaN(Number(req.body.s39)) ? Number(req.body.s39) : 0;
+    const s40 = !isNaN(Number(req.body.s40)) ? Number(req.body.s40) : 0;
+    const s41 = !isNaN(Number(req.body.s41)) ? Number(req.body.s41) : 0;
+    const s42 = !isNaN(Number(req.body.s42)) ? Number(req.body.s42) : 0;
+    const s43 = !isNaN(Number(req.body.s43)) ? Number(req.body.s43) : 0;
+    const s44 = !isNaN(Number(req.body.s44)) ? Number(req.body.s44) : 0;
+    const s45 = !isNaN(Number(req.body.s45)) ? Number(req.body.s45) : 0;
+
+
+    if (!article) return res.status(400).json({ message: `Please enter a valid article:${article}` });
+    if (!brand || typeof brand !== "string" || brand === "") return res.status(400).json({ message: `Please enter a valid brand:${brand}` });
+    if (!category || typeof category !== "string" || category === "") return res.status(400).json({ message: `Please enter a valid category:${category}` });
+    if (!gender || typeof gender !== "string" || gender === "") return res.status(400).json({ message: `Please enter a valid gender:${gender}` });
+    if (!color || typeof color !== "string" || color === "") return res.status(400).json({ message: `Please enter a valid category:${color}` });
+
+    try {
+        const payload = {
             article,
             brand,
             name,
@@ -48,49 +52,65 @@ const createItem = async (req: Request, res: Response, next: NextFunction) => {
             s43,
             s44,
             s45
-        })
-        return item
-            .save()
-            .then((item) => res.status(201).json({ item }))
-            .catch((error) => res.status(500).json(error));
+        }
+        const createItem = await Services.createItem(payload);
+        return res.status(201).json({ createItem });
+
+    } catch (err: any) {
+        console.error("Error in createItem controllers:", err); // Debug
+        return res.status(500).json({ message: `Error while creating a new item: ${err.message}` });
     }
 
 
 }
 
-const findItem = (req: Request, res: Response, next: NextFunction) => {
-    const itemArticle = req.params.itemArticle;
-    return Item.find({ article: itemArticle })
-        .then((item) => (item ? res.status(200).json({ item }) : res.status(404).json({ message: 'Not found' })))
-        .catch((error) => res.status(500).json({ error }))
+const findItem = async (req: Request, res: Response, next: NextFunction) => {
+    const article = Number(req.params.itemArticle);
+    try {
+        let item = await Repo.findItemByArticle(article);
+        if (!item) return res.status(404).json({ message: `Item ${article} Not found` });
+        return item
+    } catch (err: any) {
+        return res.status(500).json({ message: `Error findItem : while fetching an article  ${article}, error : ${err.message}` });
+    }
 
 }
 
-const getAllItems = (req: Request, res: Response, next: NextFunction) => {
-    return Item.find()
-        .then((items) => res.status(200).json({ items }))
-        .catch((error) => res.status(500).json({ error }))
+const getAllItems = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const items = await Repo.getAllItems();
+        return items;
+    } catch (err: any) {
+        return res.status(500).json({ message: `Error getAllItems : while fetching all items error : ${err}` });
+
+    }
 }
 
-const updateItem = (req: Request, res: Response, next: NextFunction) => {
-    const itemArticle = req.params.itemArticle;
-    return Item.findOne({ article: itemArticle }).then((item) => {
-        if (item) {
-            item.set(req.body);
-            return item
-                .save()
-                .then((item) => res.status(201).json({ item }))
-                .catch((error) => res.status(500).json({ error }))
-        } else {
-            return res.status(404).json({ message: 'Not found' });
-        }
-    });
+
+const updateItem = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        if (!req.body) return res.status(404).json({ message: "no req body" });
+        const article = req.params.itemArticle;
+        let updatedItem = await Services.updateItemService(Number(article), req.body);
+
+        return res.status(200).json({ updatedItem });
+    } catch (err: any) {
+        console.error("Error in  updateItem controllers:", err); // Debug
+        return res.status(500).json({ message: `Error while updating item: ${err.message}` });
+    }
+
 }
 
-const deleteItem = (req: Request, res: Response, next: NextFunction) => {
-    const itemArticle = req.params.itemArticle;
-    return Item.deleteMany({ article: itemArticle })
-        .then((item) => (item ? res.status(201).json({ message: 'deleted' }) : res.status(404).json({ message: 'Not found' })))
-        .catch((error) => res.status(500).json({ error }))
+const deleteItem = async(req: Request, res: Response, next: NextFunction) => {
+    try {
+        if (!req.body) return res.status(404).json({ message: "no req body" });
+        const article = req.params.itemArticle;
+        let deletedItem = await Services.deleteItem(Number(article));
+
+        return res.status(200).json({ deletedItem });
+    } catch (err: any) {
+        console.error("Error in  deleteItem controllers:", err); // Debug
+        return res.status(500).json({ message: `Error while deleting item: ${err.message}` });
+    }
 }
 export default { createItem, findItem, getAllItems, updateItem, deleteItem }
