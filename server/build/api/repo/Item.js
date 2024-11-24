@@ -51,7 +51,7 @@ const createItem = (article, brand, name, category, gender, color, s36, s37, s38
         throw new Error(`Error createItem Repo : ${err}`);
     }
 });
-const getAllItems = () => __awaiter(void 0, void 0, void 0, function* () {
+const getAllItems = (offset, limit) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let items = yield item_1.default.find();
         if (!items)

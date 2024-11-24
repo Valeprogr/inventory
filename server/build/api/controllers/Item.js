@@ -79,16 +79,20 @@ const findItem = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
         let item = yield Item_1.default.findItemByArticle(article);
         if (!item)
             return res.status(404).json({ message: `Item ${article} Not found` });
-        return item;
+        return res.status(200).json({ item });
     }
     catch (err) {
         return res.status(500).json({ message: `Error findItem : while fetching an article  ${article}, error : ${err.message}` });
     }
 });
 const getAllItems = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b;
     try {
-        const items = yield Item_1.default.getAllItems();
-        return items;
+        console.log("controllers start");
+        const limit = Number((_a = req.query) === null || _a === void 0 ? void 0 : _a.limit) || 10; // Default: 10 items
+        const offset = Number((_b = req.query) === null || _b === void 0 ? void 0 : _b.offset) || 0; // Default: start from 0
+        const items = yield Item_1.default.getAllItems(limit, offset);
+        return res.status(200).json({ items });
     }
     catch (err) {
         return res.status(500).json({ message: `Error getAllItems : while fetching all items error : ${err}` });

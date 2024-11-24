@@ -69,7 +69,7 @@ const findItem = async (req: Request, res: Response, next: NextFunction) => {
     try {
         let item = await Repo.findItemByArticle(article);
         if (!item) return res.status(404).json({ message: `Item ${article} Not found` });
-        return item
+        return res.status(200).json({ item });
     } catch (err: any) {
         return res.status(500).json({ message: `Error findItem : while fetching an article  ${article}, error : ${err.message}` });
     }
@@ -78,10 +78,11 @@ const findItem = async (req: Request, res: Response, next: NextFunction) => {
 
 const getAllItems = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const limit = parseInt(req.query.limit as string) || 10; // Default: 10 items
-        const offset = parseInt(req.query.offset as string) || 0; // Default: start from 0
+        console.log("controllers start")
+        const limit = Number(req.query?.limit as string) || 10; // Default: 10 items
+        const offset =  Number(req.query?.offset as string) || 0; // Default: start from 0
         const items = await Repo.getAllItems(limit, offset);
-        return items;
+        return res.status(200).json({ items });
     } catch (err: any) {
         return res.status(500).json({ message: `Error getAllItems : while fetching all items error : ${err}` });
 

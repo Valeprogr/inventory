@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Item, { IItem } from "../models/item";
+import Item from "../models/item";
 
 const findItemByArticle = async (article: number) => {
     try {
@@ -9,7 +9,6 @@ const findItemByArticle = async (article: number) => {
         throw new Error(`Error findItemByArticle: While fetching article: ${article}`);
     }
 }
-
 
 const createItem = async (
     article: number,
@@ -58,7 +57,7 @@ const createItem = async (
 
 const getAllItems = async (offset: number, limit: number) => {
     try {
-        let items = await Item.find().skip(offset).limit(limit).exec();
+        let items = await Item.find();
         if (!items) items = [];
         return items;
     } catch (err: any) {
