@@ -21,7 +21,7 @@ const DeleteProduct = () => {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json'}
         };
-        fetch(`${process.env.API_BASE_URL}shoes/deleteModel/${itemArticle}`, requestOptions)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}shoes/deleteModel/${itemArticle}`, requestOptions)
           .then((response) => response.json())
           .then((data) => console.log(data))
         showToastMessage();

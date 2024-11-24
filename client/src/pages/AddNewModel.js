@@ -54,7 +54,7 @@ const AddNewModel = () => {
     };
 
     try {
-      const response = await fetch(`${process.env.API_BASE_URL}shoes/addModel`, requestOptions);
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}shoes/addModel`, requestOptions);
 
       if (response.status === 201) { // Controlla se lo status è 201
         const data = await response.json();
