@@ -9,3 +9,5 @@ He can later add or subtract sizes from the database or delete the model.
 
 ## Technology Used
 React, Javascript (JSX), CSS, Tailwind, Node.js, Express, Typescript and MongoDB.
+
+**note**: Fix toaster success and errors , re- style form , add pagination and add loading 
